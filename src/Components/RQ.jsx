@@ -5,10 +5,17 @@ import { useQuery } from "react-query";
 export default function RQ() {
   //unique key to determine the query
   //second argument takes a promise function
-  const { data: rq, isLoading } = useQuery("super-heros", () => {
+  const {
+    data: rq,
+    isLoading,
+    error,
+    isError,
+  } = useQuery("super-heros", () => {
     return axios.get("http://localhost:5000/superheros");
   });
-  console.log(rq?.data);
+  if (isError) {
+    return <h2>{error?.message}</h2>;
+  }
 
   if (isLoading) {
     return <h1>Loading</h1>;
