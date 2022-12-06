@@ -1,10 +1,10 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import Home from "./Components/Home";
 import RQ from "./Components/RQ";
 import Heros from "./Components/Heros";
+import { ReactQueryDevtools } from "react-query/devtools";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +28,7 @@ function App() {
             <Route path="/hero" element={<Heros />}></Route>
           </Routes>
         </BrowserRouter>
+        <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
       </QueryClientProvider>
     </>
   );
